@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Parrot Flower</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+
+<!--compiled and minified CSS (8.12.2015) -->
+<link rel="stylesheet" href="Parrot%20Flower_files/bootstrap.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+<link rel="stylesheet" href="Parrot%20Flower_files/demo.css">
+<!-- Optional theme -->
+<link rel="stylesheet" href="Parrot%20Flower_files/bootstrap-theme.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+<link href="Parrot%20Flower_files/jquerysctipttop.css" rel="stylesheet" type="text/css">
+
+<!--compiled and minified JavaScript (8.12.2015) -->
+<script src="Parrot%20Flower_files/jquery-1.js"></script>
+<script src="Parrot%20Flower_files/jquery-migrate-1.js"></script>
+<script src="Parrot%20Flower_files/jquery.js"></script>
+<script src="Parrot%20Flower_files/bootstrap.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<script src="Parrot%20Flower_files/plants_list.js" type="text/javascript"></script>
+<script type="text/javascript">
+		
+$(function(){
+	$('#Grid').mixitup();
+});			
+</script>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top" style="margin-bottom: 0px;">
+  <div class="container"> 
+    
+    <!-- Brand and toggle get grouped for better mobile display 
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"><span class="sr-only">Navigation bar 1</span> </button>
+    </div> --> 
+    
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="navbar">
+      <ul class="nav navbar-nav navbar-left" style="float: left;">
+        <li><a class="navbar-brand" href="#" data-toggle="dropdown" role="button" aria-haspopup="false" aria-expanded="false"><span class="
+glyphicon glyphicon-filter"></span></a>
+          <ul class="dropdown-menu">
+            <ul class="controls">
+              <li class="filter btn btn-primary btn-lg btn-block active" data-filter="all">Všechny</li>
+              <li class="filter btn btn-primary btn-lg btn-block" data-filter="category_1">Par</li>
+              <li class="filter btn btn-primary btn-lg btn-block" data-filter="category_2">C7</li>
+              <!-- <li class="filter" data-filter="category_3">Category 3</li> -->
+              <li class="filter btn btn-default btn-lg btn-block" data-filter="category_2 category_1">Par &amp; C7</li>
+            </ul>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right" style="float: right;">
+        <li class="dropdown"> <a href="#" class="navbar-brand dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-plus"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">
+              <div class="glyphicon glyphicon-user"></div>
+              Uživatel</a></li>
+            <li><a href="#">
+              <div class="glyphicon glyphicon-cog"></div>
+              Nastavení</a></li>
+            <li><a href="#">
+              <div class="glyphicon glyphicon-inbox"></div>
+              Zprávy
+              <div class="badge">6</div>
+              </a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#" data-target="#plant_add_form" data-toggle="modal" onclick="add_new();">
+              <div class="glyphicon glyphicon-pencil"></div>
+              Přidat květinu </a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <!-- /.navbar-collapse --> 
+  </div>
+  <!-- /.container-fluid --> 
+</nav>
+<div class="container"> 
+  
+  <!-- *start* Modal detail plant -->
+  <div class="modal fade bs-example-modal-lg" id="plant_det" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+          <ul class="nav navbar-nav navbar-left">
+            <li class="dropdown" style="padding: 6px 6px !important; height: 47px !important;     margin-top: -16px;"> <a href="#" class="navbar-brand dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-menu-down"></span></a>
+              <ul class="dropdown-menu">
+                <li><a data-dismiss="modal" href="#" data-target="#plant_add_form" id="plant_addtask" data-toggle="modal">
+                  <div class="glyphicon glyphicon-plus-sign"></div>
+                  Úkol</a></li>
+                <li id="plant_edit"></li>
+                <li id="plant_del"></li>
+              </ul>
+            </li>
+          </ul>
+          <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        </div>
+        <div class="modal-body">
+          <div class="row" style="
+    margin: auto !important;
+    float: none;">
+            <div class="col-md-6">
+              <div class="thumbnail"><img id="det_img" src="Parrot%20Flower_files/a.html" alt="..." class="img-responsive">
+                <div class="caption">
+                  <h1 id="det_plant_name"></h1>
+                  <span class="glyphicon glyphicon-map-marker" style="float:left"></span>
+                  <h4 id="det_loc"></h4>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-5 panel panel-default" style="padding: none !important">
+              <div class="panel-heading">
+                <h3 class="panel-title">Log aktivit</h3>
+              </div>
+              <div class="panel-body" style="background-image:"> <small>12.12.2015 - Zalivka </small><br>
+                <small>12.12.2015 - Mineralizace </small><br>
+                <small>12.1.2016 - Zalivka </small><br>
+                <small>21.1.2016 - Kontrola</small><br>
+                <h4>Popis </h4>
+                <p>Podle dekorativnosti lze pokojové rostliny členit na 
+okrasné listem a okrasné květem, nebo podle nároků na:[1]
+                  
+                  studenodomé
+                  do poloteplých domů (subtropické)
+                  teplodomé (tropické)
+                  Podobně Hieke rozděluje pokojové rostliny na 
+teplomilné, chladnomilné a středně náročné.[2]
+                  
+                  Podle nároku na světlo lze najít skupiny různě 
+náročných rostlin, například Apidistra, Aucuba a Cissus snáší i 
+přistínění, Adianthum, Anthurium scherzerianum, Sanseviera snesou lépe 
+polostín, Cordyline, Begonia</p>
+              </div>
+            </div>
+            <div class=" clearfix"></div>
+            <div> 
+              
+              <!-- Nav tabs -->
+              <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Graf</a></li>
+                <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">To do</a></li>
+                <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
+                <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+              </ul>
+              
+              <!-- Tab panes -->
+              <div class="tab-content">
+                <div class="clearfix"><br>
+                </div>
+                <div role="tabpanel" class="tab-pane fade in  active" id="home">
+                  <div class="embed-responsive embed-responsive-4by3">
+                    <iframe class="embed-responsive-item" src="Parrot%20Flower_files/graf.html"></iframe>
+                  </div>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="profile">
+                  <div class="alert alert-info fade in" role="alert"> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> <span class="sr-only">Error:</span>
+                    <button type="button" class="close glyphicon glyphicon-check" style="float:left; margin-right: 10px;" data-dismiss="alert" aria-label="Close"></button>
+                    Nedostatečná zálivka </div>
+                  <div class="alert alert-warning fade in" role="alert"> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> <span class="sr-only">Error:</span>
+                    <button type="button" class="close glyphicon glyphicon-check" style="float:left; margin-right: 10px;" data-dismiss="alert" aria-label="Close"></button>
+                    Nedostatečná zálivka</div>
+                  <div class="alert alert-danger fade in" role="alert"> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    <button type="button" class="close glyphicon glyphicon-check" style="float:left; margin-right: 10px;" data-dismiss="alert" aria-label="Close"></button>
+                    Svetlo není dostatecne </div>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="messages">...</div>
+                <div role="tabpanel" class="tab-pane fade" id="settings">...</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Zavřít</button>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- *end* Modal detail plant --> 
+  
+  <!-- *start* add new detail plant form -->
+  <div class="modal fade bs-example-modal-lg" id="plant_add_form" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+          <h4 class="modal-title" id="ModalLabel">Přidat květinu</h4>
+        </div>
+        <div class="modal-body">
+          <form class="form-horizontal" role="form" action="./json.php" method="post">
+            <div class="form-group">
+              <label class="control-label col-sm-2" for="email">Name:</label>
+              <div class="col-sm-10">
+                <input class="form-control" id="name" name="name" placeholder="" type="text">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-sm-2" for="pwd">Group:</label>
+              <div class="col-sm-10">
+                <input class="form-control" id="group" name="group" placeholder="" type="text">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-sm-2" for="pwd">Location:</label>
+              <div class="col-sm-10">
+                <input class="form-control" id="loc" name="loc" placeholder="" type="text">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-sm-2" for="pwd">Img Url:</label>
+              <div class="col-sm-10">
+                <input class="form-control" id="url" name="loc" placeholder="" type="text">
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="add_new">Přidat květinu</button>
+          <span id="edit_save"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- *end* add new plant form -->
+  
+  <div class="row">
+    <div id="Grid"><a data-toggle="modal" onclick="plant_det(0)" data-target="#plant_det"><div class="col-xs-15 col-sm-4 mix category_1 mix_all" style="display: inline-block;  opacity: 1;"><div data-cat="1"><div class="thumbnail btn btn-default"><div class="caption"><div class="list_img"><img src="Parrot%20Flower_files/003.jpg" class="img-responsive" alt="..." width="312" height="234"></div><p class="lead"></p><h3>aglaonema</h3><p></p><div class="text-center"><span class="glyphicon glyphicon-map-marker"> </span>  <small class="badge">Par 2.1</small><br><span class="glyphicon glyphicon-check"><br></span> <div class="label label-warning">Warning: 2</div> <div class="label label-danger">critical: 3</div><br></div></div>  </div> </div></div></a><a data-toggle="modal" onclick="plant_det(1)" data-target="#plant_det"><div class="col-xs-15 col-sm-4 mix category_1 mix_all" style="display: inline-block;  opacity: 1;"><div data-cat="1"><div class="thumbnail btn btn-default"><div class="caption"><div class="list_img"><img src="Parrot%20Flower_files/004.jpg" class="img-responsive" alt="..." width="312" height="234"></div><p class="lead"></p><h3>Potted</h3><p></p><div class="text-center"><span class="glyphicon glyphicon-map-marker"> </span>  <small class="badge">Par recepce</small><br><span class="glyphicon glyphicon-check"><br></span> <div class="label label-warning">Warning: 2</div> <div class="label label-danger">critical: 3</div><br></div></div>  </div> </div></div></a><a data-toggle="modal" onclick="plant_det(2)" data-target="#plant_det"><div class="col-xs-15 col-sm-4 mix category_2 mix_all" style="display: inline-block;  opacity: 1;"><div data-cat="2"><div class="thumbnail btn btn-default"><div class="caption"><div class="list_img"><img src="Parrot%20Flower_files/005.jpg" class="img-responsive" alt="..." width="312" height="234"></div><p class="lead"></p><h3>Echinopsis subdenudata</h3><p></p><div class="text-center"><span class="glyphicon glyphicon-map-marker"> </span>  <small class="badge">C7 2.1</small><br><span class="glyphicon glyphicon-check"><br></span> <div class="label label-warning">Warning: 2</div> <div class="label label-danger">critical: 3</div><br></div></div>  </div> </div></div></a><a data-toggle="modal" onclick="plant_det(3)" data-target="#plant_det"><div class="col-xs-15 col-sm-4 mix category_2 mix_all" style="display: inline-block;  opacity: 1;"><div data-cat="2"><div class="thumbnail btn btn-default"><div class="caption"><div class="list_img"><img src="Parrot%20Flower_files/007.jpg" class="img-responsive" alt="..." width="312" height="234"></div><p class="lead"></p><h3>Yucca gloriosa</h3><p></p><div class="text-center"><span class="glyphicon glyphicon-map-marker"> </span>  <small class="badge">C7 2.1</small><br><span class="glyphicon glyphicon-check"><br></span> <div class="label label-warning">Warning: 2</div> <div class="label label-danger">critical: 3</div><br></div></div>  </div> </div></div></a><a data-toggle="modal" onclick="plant_det(4)" data-target="#plant_det"><div class="col-xs-15 col-sm-4 mix category_2 mix_all" style="display: inline-block;  opacity: 1;"><div data-cat="2"><div class="thumbnail btn btn-default"><div class="caption"><div class="list_img"><img src="Parrot%20Flower_files/001.jpg" class="img-responsive" alt="..." width="312" height="234"></div><p class="lead"></p><h3>Banánovník</h3><p></p><div class="text-center"><span class="glyphicon glyphicon-map-marker"> </span>  <small class="badge">C7 0.1</small><br><span class="glyphicon glyphicon-check"><br></span> <div class="label label-warning">Warning: 2</div> <div class="label label-danger">critical: 3</div><br></div></div>  </div> </div></div></a></div>
+  </div>
+</div>
+
+</body></html>

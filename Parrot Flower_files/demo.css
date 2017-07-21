@@ -1,0 +1,77 @@
+body {
+    
+    padding-top: 70px;
+}
+.controls {
+display: inline-block;
+width: 180px;
+margin: 30px -30px 30px;
+vertical-align: top;
+}
+.controls li {
+
+cursor: pointer;
+list-style-type: square;
+}
+.controls li.active {
+font-weight: 700;
+}
+#Grid {
+	min-height: 1200px;
+text-align: justify;
+font-size: 0.1px;
+}
+#Grid:after {
+content: '';
+display: inline-block;
+width: 100%;
+}
+#Grid .mix {
+display: none;
+opacity: 0;
+vertical-align: top;
+	
+
+color: #fff;
+font-size: 30px;
+text-align: center;
+line-height: 200px;
+margin-bottom:0.32%;
+}
+#Grid .gap {
+display: inline-block;
+
+}
+
+.carousel-inner>.item>a>img, .carousel-inner>.item>img, .img-responsive, .thumbnail a>img, .thumbnail>img {
+    display: inline !important;
+    max-width: 100%;
+    
+
+}
+.row {
+   margin-right: 15px !important;
+   margin-left: 15px !important;
+}
+
+.main {
+	width: 100%;
+	display: block;
+	float:left;
+	}
+@media only screen and (min-width: 800px) {	
+.list_img   {
+	height: auto;
+	float: none;
+	position: relative;
+}
+}
+h3 {
+	overflow:hidden !important;
+	width: 100% !important;	
+}
+.navbar {
+ 
+    margin-bottom: 0px !important;
+   	
+}

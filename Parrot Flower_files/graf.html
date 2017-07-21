@@ -1,0 +1,91 @@
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title id="Description">jqxChart Formatting Example</title>
+    <link rel="stylesheet" href="graf_data/jqx.css" type="text/css">
+    <script type="text/javascript" src="graf_data/jquery-1.js"></script>
+    <script type="text/javascript" src="graf_data/jqxcore.js"></script>
+    <script type="text/javascript" src="graf_data/jqxdata.js"></script>
+    <script type="text/javascript" src="graf_data/jqxchart.js"></script>
+    <script type="text/javascript" src="graf_data/jqxdraw.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // prepare chart data
+            var  sampleData = [
+                    { Day:0, Vláha:30, Minerály:15, Světlo: 25},
+                    { Day:1, Vláha:25, Minerály:25, Světlo: 30},
+                    { Day:2, Vláha:30, Minerály:20, Světlo: 25},
+                    { Day:3, Vláha:35, Minerály:25, Světlo: 45},
+                    { Day:4, Vláha:20, Minerály:20, Světlo: 25},
+                    { Day:5, Vláha:30, Minerály:20, Světlo: 30},
+                    { Day:6, Vláha:60, Minerály:45, Světlo: 90}
+                ];
+            // prepare jqxChart settings
+            var settings = {
+                title: "Graf stavu substrátu a okolí rosliny",
+                description: "Hodnouty vypovídají o stavu rostliny",
+                padding: { left: 5, top: 5, right: 5, bottom: 5 },
+                titlePadding: { left: 90, top: 0, right: 0, bottom: 10 },
+                source: sampleData,
+                xAxis:
+                {
+                    dataField: 'Day',
+                    formatFunction: function (value, itemIndex, serie, group) {
+                        // value is from 0-6 (see 'Day' field in sampleData above)
+                        var days = 
+                            ['Monday', 'Tuesday', 'Wednesday', 
+                            'Thursday', 'Friday', 'Saturday', 'Sunday'];
+                            
+                        return days[value];
+                    },
+                    valuesOnTicks: false
+                },
+                valueAxis:
+                {
+                    minValue: 0,
+                    maxValue: 100,
+                    unitInterval: 10,
+                    title: {text: 'Jednotky'},
+                    labels:
+                    {
+                        horizontalAlignment: 'right',
+                        formatSettings:
+                        {
+                            decimalPlaces: 2
+                        }
+                    }
+                },                
+                colorScheme: 'scheme01',
+                seriesGroups:
+                [
+                    {
+                        type: 'line',
+                        toolTipFormatFunction: function(value, itemIndex, serie, group, xAxisValue, xAxis) {
+                            var days = 
+                                ['Monday', 'Tuesday', 'Wednesday', 
+                                'Thursday', 'Friday', 'Saturday', 'Sunday'];
+                        
+                            var formattedTooltip = "<div>" + 
+                                "<b>Day: </b>" + days[xAxisValue] + "</br>" +
+                                "<b>Serie: </b>" + serie.dataField + "</br>" +
+                                "<b>Jednotek: </b>" + value + " min</br>" +
+                                "</div>";
+                            return formattedTooltip;
+                        },                    
+                        series: [
+                                { dataField: 'Vláha', displayText: 'Vláha'},
+                                { dataField: 'Minerály', displayText: 'Minerály'},
+                                { dataField: 'Světlo', displayText: 'Světlo'}
+                            ]
+                    }
+                ]
+            };
+            
+            // select the chartContainer DIV element and render the chart.
+            $('#chartContainer').jqxChart(settings);
+        });
+    </script>
+</head>
+<body style="background:white;">
+    <div id="chartContainer" style="width:100%; height: 100%">
+
+</div></body></html>
